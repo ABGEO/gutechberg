@@ -5,6 +5,7 @@ import (
 
 	"github.com/abgeo/gutechberg/pkg"
 	"github.com/abgeo/gutechberg/pkg/command"
+	initCmd "github.com/abgeo/gutechberg/pkg/command/init"
 	"github.com/abgeo/gutechberg/pkg/command/publish"
 	"github.com/abgeo/gutechberg/pkg/config"
 	"github.com/abgeo/gutechberg/pkg/platform"
@@ -61,9 +62,10 @@ func registerPlatforms(constructors ...func() (platform.Interface, error)) (plat
 func registerCommands(options command.Options) *cobra.Command {
 	cmdRoot := command.NewRootCommand(options)
 
+	cmdInit := initCmd.NewCommand(options)
 	cmdPublish := publish.NewCommand(options)
 
-	cmdRoot.AddCommand(cmdPublish)
+	cmdRoot.AddCommand(cmdInit, cmdPublish)
 
 	return cmdRoot
 }

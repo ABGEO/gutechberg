@@ -2,6 +2,7 @@ package twitter
 
 import (
 	"fmt"
+
 	"github.com/abgeo/gutechberg/pkg/config"
 	"github.com/abgeo/gutechberg/pkg/platform"
 	"github.com/pkg/errors"
